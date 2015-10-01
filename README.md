@@ -1,2 +1,2 @@
 # DeathPopUps
-Idea by CaptainKenji17
+For @CaptainKenji17
