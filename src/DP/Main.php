@@ -25,13 +25,16 @@ $p=$ev->getEntity();
 if($ev instance of EntityDamageByEntityEvent){
 $killer = $ev->getEntity()->getLastDamageCause()->getDamager();
 if($ev instanceof Player){
-$killer->sendPopup("You Killed ".$p->getName()."!!!!");
+foreach($this->getServer()->getOnlinePlayers() as $pl){
+ $pl->sendTip($killer->getName()."-=-".$p->getName()); 
+}
+}
 }
 }
 if($ev instance of EntityDamageByChildEntityEvent){
 $killer = $ev->getEntity()->getLastDamageCause()->getDamager();
 if($ev instanceof Player){
-$killer->sendPopup("You shot ".$p->getName()."!!!!");
+$killer->sendPopup("You sho".$p->getName()."!!!!");
 }
 }
 }
