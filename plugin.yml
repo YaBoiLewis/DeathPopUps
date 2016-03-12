@@ -1,5 +1,5 @@
 name: DeathPopups
 version: 1.0
 main: DP\Main
-api: [1.12.0]
-author: Savionojnononnno
+api: [1.12.0, 2.0.0]
+author: SavionLegendZzz
