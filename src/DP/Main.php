@@ -13,6 +13,7 @@ use pocketmine\event\entity\EntityDamageByChildEntityEvent;
 use pocketmine\event\player\PlayerDeathEvent;
 
 class Main extends PluginBase implements Listener{
+
     public function onEnable(){
         $this->getServer()->getLogger()->info(TextFormat::BLUE."[DeathPopups]Plugin Enabled!");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -32,7 +33,9 @@ class Main extends PluginBase implements Listener{
             $killer = $ev->getEntity()->getLastDamageCause();
         }
         if ($ev instanceof Player) {
-            $killer->sendPopup("You sho" . $p->getName() . "!!!!");
+            $killer->sendPopup("You showed" . $p->getName() . "!!!!");
         }
     }
 }
+
+// Was never @YaBoiLewis 's formatting. Was @YaBoiSavion or SavionTheLegendZzz's. Don't ask @YaBoiLewis why it was like that.
