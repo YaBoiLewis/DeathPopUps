@@ -14,28 +14,28 @@ use pocketmine\event\player\PlayerDeathEvent;
 
 class Main extends PluginBase implements Listener{
 
-public function onEnable(){
+    public function onEnable(){
+        $this->getServer()->getLogger()->info(TextFormat::BLUE."[DeathPopups]Plugin Enabled!");
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    }
 
-$this->getServer()->getLogger()->info(TextFormat::BLUE."[DeathPopups]Plugin Enabled!");
-$this->getServer()->getPluginManager()->registerEvents($this,$this);
+    public function onDeath(PlayerDeathEvent $ev){
+        $p = $ev->getEntity();
+        if ($ev instanceof EntityDamageByEntityEvent) {
+            $killer = $ev->getEntity()->getLastDamageCause();
+        }
+        if ($ev instanceof Player) {
+            foreach ($this->getServer()->getOnlinePlayers() as $pl) {
+                $pl->sendTip($killer->getName() . "-=-" . $p->getName());
+            }
+        }
+        if ($ev instanceof EntityDamageByChildEntityEvent) {
+            $killer = $ev->getEntity()->getLastDamageCause();
+        }
+        if ($ev instanceof Player) {
+            $killer->sendPopup("You showed" . $p->getName() . "!!!!");
+        }
+    }
 }
 
-public function onDeath(PlayerDeathEvent $ev){
-$p=$ev->getEntity();
-if($ev instance of EntityDamageByEntityEvent){
-$killer = $ev->getEntity()->getLastDamageCause()->getDamager();
-if($ev instanceof Player){
-foreach($this->getServer()->getOnlinePlayers() as $pl){
- $pl->sendTip($killer->getName()."-=-".$p->getName()); 
-}
-}
-}
-}
-if($ev instance of EntityDamageByChildEntityEvent){
-$killer = $ev->getEntity()->getLastDamageCause()->getDamager();
-if($ev instanceof Player){
-$killer->sendPopup("You sho".$p->getName()."!!!!");
-}
-}
-}
-}
+// Was never @YaBoiLewis 's formatting. Was @YaBoiSavion or SavionTheLegendZzz's. Don't ask @YaBoiLewis why it was like that.
